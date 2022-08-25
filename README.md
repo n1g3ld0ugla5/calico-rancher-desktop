@@ -93,7 +93,7 @@ kubectl get pods -n calico-system -w
 ```
 Wait until each pod has the ```STATUS``` of ```Running```.
 
-Congratulations! You now have an Rancher Desktop cluster running Calico
+Congratulations! You now have an Rancher Desktop cluster running Calico <br/>
 As expected, those coredns pods are now in a ```Running``` state after the CNI install
 
 ## Exec into the pod as an elevated root user
