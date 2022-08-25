@@ -84,7 +84,13 @@ kubectl create -f https://projectcalico.docs.tigera.io/manifests/tigera-operator
 
 Install Calico by creating the necessary custom resource.
 ```
-kubectl create -f https://projectcalico.docs.tigera.io/manifests/custom-resources.yaml
+curl https://raw.githubusercontent.com/projectcalico/calico/v3.24.0/manifests/custom-resources.yaml -O
+```
+```
+vi custom-resources.yaml
+```
+```
+kubectl create -f custom-resources.yaml
 ```
 
 Confirm that all of the pods are running with the following command.
