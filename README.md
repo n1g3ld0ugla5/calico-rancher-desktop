@@ -61,7 +61,7 @@ networking:
 ```
 
 ```  
-kind create cluster --config kind-calico.yaml
+./kind create cluster --config kind-calico.yaml
 ```
 
 ## Verify Kind Cluster
