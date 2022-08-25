@@ -10,6 +10,23 @@ cd desktop
 mkdir rancher-desktop
 ```
 
+## Set Context to Rancher Desktop
+
+Display list of contexts
+```
+kubectl config get-contexts                         
+```
+
+Display the current-context
+```
+kubectl config current-context                     
+```
+
+Set the default context to the cluster name ```rancher-desktop```
+```
+kubectl config use-context rancher-desktop    
+```
+
 ## Install KinD
 
 KinD offers a lot of customization like using another CNI component like Calico for CNI and network policies instead of relying on the built-in one <br/>
