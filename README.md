@@ -89,7 +89,7 @@ kubectl create -f https://projectcalico.docs.tigera.io/manifests/custom-resource
 
 Confirm that all of the pods are running with the following command.
 ```
-watch kubectl get pods -n calico-system
+kubectl get pods -n calico-system -w
 ```
 Wait until each pod has the ```STATUS``` of ```Running```.
 
