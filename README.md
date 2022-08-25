@@ -79,18 +79,12 @@ They will remain in the pending state until a CNI plugin is installed.
 ## Install Calico CNI
 Install the Tigera Calico operator and custom resource definitions.
 ```
-kubectl create -f https://projectcalico.docs.tigera.io/manifests/tigera-operator.yaml
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.0/manifests/tigera-operator.yaml
 ```
 
 Install Calico by creating the necessary custom resource.
 ```
-curl https://raw.githubusercontent.com/projectcalico/calico/v3.24.0/manifests/custom-resources.yaml -O
-```
-```
-vi custom-resources.yaml
-```
-```
-kubectl create -f custom-resources.yaml
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.0/manifests/custom-resources.yaml
 ```
 
 Confirm that all of the pods are running with the following command.
