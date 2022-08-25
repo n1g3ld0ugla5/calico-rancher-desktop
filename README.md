@@ -96,3 +96,31 @@ Wait until each pod has the ```STATUS``` of ```Running```.
 Congratulations! You now have an Rancher Desktop cluster running Calico
 As expected, those coredns pods are now in a ```Running``` state after the CNI install
 
+## Exec into the pod as an elevated root user
+By defauolt, long-running Calico components such as ```calico/node``` can be can be run with privileged or root permissions<br/>
+We can prove this by shelling into their respective containers:
+
+```
+kubectl exec pod/calico-node-5pwbk -n calico-system -it -- bash
+```
+
+Since we installed Calico via an operator, we can now edit the Calico installation resource to set the ```nonPrivileged``` field to ```Enabled```.
+
+```
+kubectl edit installation default
+```
+
+The ```calico-node``` pods in the ```calico-system``` namespace should now restart. <br/>
+You can verify that those worklaods restarted correctly via the below commands:
+
+```
+watch kubectl get pods -n calico-system
+```
+
+Calico should now be running ```calico-node``` in ```non-privileged``` and ```non-root``` containers. <br/>
+Let's attempt to shell into the same workload to see if it works for us with root permissions:
+
+```
+kubectl exec pod/calico-node-5pwbk -n calico-system -it -- bash
+```
+
