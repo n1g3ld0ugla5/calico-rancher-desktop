@@ -124,3 +124,23 @@ Let's attempt to shell into the same workload to see if it works for us with roo
 kubectl exec pod/calico-node-5pwbk -n calico-system -it -- bash
 ```
 
+## Step 1: Create host endpoints
+First, you create the HostEndtpoints corresponding to the network interfaces where you want to enforce DoS mitigation rules. <br/>
+In the ```hep.yaml file```, the HostEndpoint secures the interface named eth0 with IP 10.0.0.1 on node ```kind-control-plane```.
+
+```
+apiVersion: projectcalico.org/v3
+kind: HostEndpoint
+metadata:
+  name: production-host
+  labels:
+    apply-dos-mitigation: "true"
+spec:
+  interfaceName: eth0
+  node: kind-control-plane
+  expectedIPs: ["10.0.0.1"]
+```
+
+```
+kubectl apply -f hep.yaml
+```
